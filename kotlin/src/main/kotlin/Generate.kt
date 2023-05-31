@@ -15,7 +15,7 @@ val content = StardustDslContentProvider {
                     "patch" -> "Orange"
                     else -> throw RuntimeException("Invalid method type: ${method.type}")
                 }
-                xml ("""<p>Method type: <b><font color="$font">${method.type.uppercase()}</font></b></p><deflist><def><title>${method.summary}</title><p>${method.description}</p></def></deflist>""")
+                xml ("""<p>Method type: <b><font color="$font">${method.type.uppercase()}</font></b></p><deflist><def title="${method.summary}"><p>${method.description}</p></def></deflist>""")
 //                p {+ method.summary}
 //                p {+ method.description}
                 links[path.url]?.let { xml("""<p>For more information refer to: <a href="$it"/></p>""") }
