@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+        SYSTEM "https://resources.jetbrains.com/stardust/html-entities.dtd">
+<topic xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/stardust/topic.v2.xsd"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        title="About Sample Product"
+        id="About Sample Product">
+
+<p>Let's see what we have to say about Sample Product</p>
+
+<!--region Generated_content-->
+  <p>Updated: 2023-05-17</p>
+  <chapter>
+    <title>
+      ChapterTitle
+    </title>
+    <p>
+      Hello DSL
+    </p>
+  </chapter>
+  <p>
+    Hello DSL
+  </p>
+  <list>
+    <li>
+      List item 0
+    </li>
+    <li>
+      List item 1
+    </li>
+    <li>
+      List item 2
+    </li>
+    <li>
+      List item 3
+    </li>
+    <li>
+      List item 4
+    </li>
+    <li>
+      List item 5
+    </li>
+    <li>
+      List item 6
+    </li>
+    <li>
+      List item 7
+    </li>
+    <li>
+      List item 8
+    </li>
+    <li>
+      List item 9
+    </li>
+    <li>
+      List item 10
+    </li>
+  </list>
+  <table header-style="top">
+    <tr>
+      <td>
+        Item 1
+      </td>
+      <td>
+        Item 2
+      </td>
+    </tr>
+  </table>
+  
+          <deflist>
+            <def title="Title">
+            <p>Description.</p>
+            </def>
+          </deflist>
+      
+
+<!--endregion-->
+
+</topic>
