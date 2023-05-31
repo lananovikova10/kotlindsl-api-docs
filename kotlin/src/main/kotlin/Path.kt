@@ -14,12 +14,5 @@ data class Parameter(
     val name: String,
     val type: String,
     val required: Boolean,
-    val schema: ParameterSchema
-)
-
-data class ParameterSchema(
-    val nullable: Boolean? = null,
-    val default: Any? = null,
-    val type: String? = null,
-    val format: String? = null
+    val schema: Map<String, String>
 )

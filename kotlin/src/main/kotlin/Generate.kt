@@ -40,7 +40,7 @@ val content = StardustDslContentProvider {
             }
         }
     }
-        this
+    this
 }
 
 fun main() {

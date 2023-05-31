@@ -13,20 +13,12 @@ fun parse(jsonPath: String): List<Path> = mutableListOf<Path>().apply {
             val summary = methodElement["summary"].asString
             val description = methodElement["description"]?.asJsonObject?.get("text")?.asString ?: "Not provided"
             val parametersJsonArray = methodElement["parameters"]?.asJsonArray
-
             val parametersList = parametersJsonArray?.map { parameterElement ->
                 val parameterObject = parameterElement.asJsonObject
                 val parameterName = parameterObject["name"].asString
                 val parameterType = parameterObject["schema"]?.asJsonObject?.get("type")?.asString ?: "Unknown"
                 val parameterRequired = parameterObject["required"].asBoolean
-                val parameterSchema = parameterObject["schema"]?.asJsonObject?.let { schemaElement ->
-                    ParameterSchema(
-                        nullable = schemaElement["nullable"]?.asBoolean,
-                        type = schemaElement["type"]?.asString,
-                        format = schemaElement["format"]?.asString
-                    )
-                } ?: ParameterSchema()
-
+                val parameterSchema = parameterObject["schema"]?.asJsonObject?.asMap()?.mapValues { it.value.asString } ?: emptyMap()
                 Parameter(parameterName, parameterType, parameterRequired, parameterSchema)
             } ?: emptyList()
 
