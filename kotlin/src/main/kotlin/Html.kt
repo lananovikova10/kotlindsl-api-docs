@@ -1,10 +1,9 @@
 import kotlinx.html.*
 import kotlinx.html.stream.createHTML
-import java.nio.file.Path
 import java.nio.file.Paths
 import kotlin.io.path.writeText
 
-val htmlOut: Path = Paths.get("./output/openapi.html")
+val htmlOut = Paths.get("./output/openapi.html")
 val html = createHTML()
 
 fun main() {
@@ -12,7 +11,17 @@ fun main() {
         title { +"OpenAPI reference example" }
         unsafe { +"""<link rel="stylesheet" type="text/css" href="./styles.css"/>""" }
     }
+    html.body {
+        header { +"Excellent API" }
 
+        paths.forEach { path ->
+            h1 { +path.url }
+
+            path.methods.forEach { method ->
+                methodDescription(method)
+            }
+        }
+    }
 
     htmlOut.writeText(html.finalize())
 
