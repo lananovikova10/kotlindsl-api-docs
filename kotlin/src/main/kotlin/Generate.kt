@@ -1,7 +1,7 @@
 import dsl.*
 import dsl.List
 
-val paths = parse("/Users/svetlana.novikova_1/IdeaProjects/Kotlin-DSL-API/kotlin/space-open-api.json")
+val paths = parse("./kotlin/space-open-api.json")
 
 val content = StardustDslContentProvider {
 

@@ -18,7 +18,13 @@ fun parse(jsonPath: String): List<Path> = mutableListOf<Path>().apply {
                 val parameterName = parameterObject["name"].asString
                 val parameterType = parameterObject["schema"]?.asJsonObject?.get("type")?.asString ?: "Unknown"
                 val parameterRequired = parameterObject["required"].asBoolean
-                val parameterSchema = parameterObject["schema"]?.asJsonObject?.asMap()?.mapValues { it.value.asString } ?: emptyMap()
+                val parameterSchema = try {
+                    parameterObject["schema"]?.asJsonObject?.asMap()?.mapValues { it.value.asString } ?: emptyMap()
+                } catch (e: Exception) {
+                    println("Exception while parsing $urlKey $methodKey")
+                    emptyMap()
+                }
+
                 Parameter(parameterName, parameterType, parameterRequired, parameterSchema)
             } ?: emptyList()
 
