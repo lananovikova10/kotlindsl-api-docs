@@ -27,16 +27,16 @@ fun main() {
 
 }
 
-private fun BODY.methodDescription(method: Method) {
-    h2 { +method.type }
-    p { +method.summary }
-    p { +method.description }
+private fun BODY.methodDescription(m: Method) {
+    h2 { +m.type }
+    p { +m.summary }
+    p { +m.description }
 
     table {
         tr {
             td { +"Name" }; td { +"Type" }; td { +"Required" }
         }
-        method.parameters.forEach { parameter ->
+        m.parameters.forEach { parameter ->
             tr {
                 td { +parameter.name }; td { +parameter.type }; td { +if (parameter.required) "Yes" else "No" }
             }
