@@ -16,13 +16,24 @@ val content = StardustDslContentProvider {
                     "patch" -> "Orange"
                     else -> throw RuntimeException("Invalid method type: ${method.type}")
                 }
-                xml("""
-                     <p>Method type: <b><font color="$font">${method.type.uppercase()}</font></b></p>
-                     <deflist>
-                         <def title="${method.summary}">
-                             <p>${method.description}</p>
-                         </def>
-                     </deflist>""".trimIndent())
+
+                if (method.description.contains("DEPRECATED")) {
+                    xml("""
+                         <p>Method type: <b><font color="$font">${method.type.uppercase()}</font></b></p>
+                         <deflist>
+                             <def title="${method.summary}">
+                                 <warning>${method.description}</warning>
+                             </def>
+                         </deflist>""".trimIndent())
+                } else {
+                    xml("""
+                         <p>Method type: <b><font color="$font">${method.type.uppercase()}</font></b></p>
+                         <deflist>
+                             <def title="${method.summary}">
+                                 <p>${method.description}</p>
+                             </def>
+                         </deflist>""".trimIndent())
+                }
 
                 links[path.url]?.let { xml("""<p>For more information refer to: <a href="$it"/></p>""") }
             }
@@ -42,6 +53,7 @@ val content = StardustDslContentProvider {
     }
     this
 }
+
 
 fun main() {
     generateChunk(
